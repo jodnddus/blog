@@ -1,0 +1,8 @@
+.sass-cache
+assets
+node_modules
+public
+.idea
+.deploy_git
+themes/landscape
+db.json
