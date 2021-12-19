@@ -1,0 +1,22 @@
+.post-item-container {
+  margin-top: 3rem;
+  transition: background-color, padding 0.3s;
+}
+.post-item-container:hover {
+  background-color: #edf2f7;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+.post-title-link {
+  text-decoration: none;
+}
+.post-title {
+  color: black;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+.post-description {
+  color: black;
+  margin: 0;
+}
