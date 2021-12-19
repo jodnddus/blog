@@ -1,0 +1,18 @@
+.image-cropper {
+  width: 13rem;
+  height: 13rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  transition: box-shadow 0.3s;
+}
+.image-cropper:hover {
+  box-shadow: 0 0 0 13px #edf2f7;
+  cursor: pointer;
+}
+.rounded {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
