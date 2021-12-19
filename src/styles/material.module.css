@@ -1,0 +1,12 @@
+.container {
+  font-family: "Noto Sans KR";
+  max-width: 600px;
+  margin: 0 auto;
+}
+.post-title {
+  color: black;
+  text-decoration: none;
+}
+.post-title:hover {
+  text-decoration: underline;
+}
