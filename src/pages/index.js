@@ -20,9 +20,9 @@ const IndexPage = ({ data }) => {
       <title>조웅연 개발 블로그</title>
       <section className={profileSection}>
         <div className={profileInfoContainer}>
-          <h1 className={blogTitle}>조웅연</h1>
+          <h1 className={blogTitle}>조웅연<br />개발 블로그</h1>
           <p className={blogDescription}>
-            안녕하세요, 프론트엔드 개발자 조웅연입니다.
+            안녕하세요, 프론트엔드 개발자<br />조웅연입니다.
           </p>
         </div>
         <ProfileImage />
