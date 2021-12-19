@@ -1,21 +1,42 @@
 import * as React from "react";
-import { graphql, Link } from "gatsby";
-import { container, postTitle } from "../styles/material.module.css";
+import { graphql } from "gatsby";
+import {
+  container,
+  profileSection,
+  profileInfoContainer,
+  middleSection,
+  writingEmoji,
+  postSection,
+  blogTitle,
+  blogDescription,
+} from "../styles/material.module.css";
+
+import PostItem from "../components/PostItem";
+import ProfileImage from "../components/ProfileImage";
 
 const IndexPage = ({ data }) => {
   return (
     <main className={container}>
       <title>조웅연 개발 블로그</title>
-      <h1>조웅연 개발 블로그</h1>
-      {data.allMdx.nodes.map((node) => (
-        <article key={node.id}>
-          <Link to={`/${node.slug}`} className={postTitle}>
-            <h2>{node.frontmatter.title}</h2>
-          </Link>
-          <p>{node.frontmatter.description}</p>
-          <p>{node.frontmatter.date}</p>
-        </article>
-      ))}
+      <section className={profileSection}>
+        <div className={profileInfoContainer}>
+          <h1 className={blogTitle}>조웅연</h1>
+          <p className={blogDescription}>
+            안녕하세요, 프론트엔드 개발자 조웅연입니다.
+          </p>
+        </div>
+        <ProfileImage />
+      </section>
+      <section className={middleSection}>
+        <span className={writingEmoji}>
+          {data.allMdx.nodes.map(() => ".")}✍️
+        </span>
+      </section>
+      <section className={postSection}>
+        {data.allMdx.nodes.map((node) => (
+          <PostItem post={node} />
+        ))}
+      </section>
     </main>
   );
 };

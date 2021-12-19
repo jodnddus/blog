@@ -1,12 +1,32 @@
 .container {
   font-family: "Noto Sans KR";
   max-width: 600px;
-  margin: 0 auto;
+  margin: 5rem auto;
 }
-.post-title {
-  color: black;
-  text-decoration: none;
+.profile-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
 }
-.post-title:hover {
-  text-decoration: underline;
+.profileInfoContainer {
+  max-width: 20rem;
+}
+.middle-section {
+  padding: 0 1rem;
+  text-align: center;
+}
+.writing-emoji {
+  font-size: 3rem;
+}
+.post-section {
+  padding: 0 1rem;
+}
+.blog-title {
+  margin: 0;
+  font-size: 3rem;
+}
+.blog-description {
+  margin: 0;
+  font-size: 1.5rem;
 }
