@@ -4,8 +4,6 @@ module.exports = {
     title: "blog",
   },
   plugins: [
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -13,7 +11,31 @@ module.exports = {
         path: `${__dirname}/posts`,
       },
     },
-    "gatsby-plugin-mdx",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `images`,
+        path: `${__dirname}/static/images`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 720,
+              linkImagesToOriginal: false,
+              backgroundColor: "transparent",
+            },
+          },
+        ],
+      },
+    },
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
+    "gatsby-plugin-image",
     "gatsby-plugin-sass",
   ],
 };

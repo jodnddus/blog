@@ -4,29 +4,35 @@ import { container } from "../styles/material.module.css";
 import PostHeader from "../components/PostHeader";
 import PostContent from "../components/PostContent";
 
-const BlogPost = ({ data }) => {
+const PostTemplate = ({ data }) => {
   return (
     <div className={container}>
       <section>
-        <PostHeader post={data.mdx.frontmatter} />
+        <PostHeader post={data.markdownRemark.frontmatter} />
       </section>
       <section>
-        <PostContent body={data.mdx.body} />
+        <PostContent html={data.markdownRemark.html} />
       </section>
     </div>
   );
 };
 
 export const post = graphql`
-  query ($id: String) {
-    mdx(id: { eq: $id }) {
+  query ($slug: String) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      html
+      excerpt(pruneLength: 500, truncate: true)
       frontmatter {
+        date(formatString: "MMMM DD, YYYY")
         title
-        date(formatString: "MMMM D, YYYY")
+        categories
       }
-      body
+      fields {
+        slug
+      }
     }
   }
 `;
 
-export default BlogPost;
+export default PostTemplate;
