@@ -57,17 +57,17 @@ _개발을 하며 이 프로젝트를 **샌드박스 보고서** 프로젝트라
 
 ## 조금 더 구체적인 사례
 
-![sandbox1](../assets/sandbox1.png)
+![sandbox1](../static/images/sandbox1.png)
 
-![sandbox2](../assets/sandbox2.png)
+![sandbox2](../static/images/sandbox2.png)
 
 이런 모양의 데이터가 수집되었다고 가정했을 때. 일반 블록으로 전체 만족도를 표현하면 위 차트가 만들어진다
 
 이제 각 점포별로 데이터 필터를 걸어서 일반 블록으로 만들면
 
-![sandbox3](../assets/sandbox3.png)
+![sandbox3](../static/images/sandbox3.png)
 
-![sandbox4](../assets/sandbox4.png)
+![sandbox4](../static/images/sandbox4.png)
 
 이런 모양의 일반 블록이 4개가 만들어진다. 이 블록들을 합치면 비교 블록이 되고, 위 차트처럼 여러 계열이 합쳐진 차트가 나온다.
 
@@ -85,6 +85,6 @@ _개발을 하며 이 프로젝트를 **샌드박스 보고서** 프로젝트라
 
 비교 블록은 _"어떻게 비교 블록을 생성할 것이냐"_ 부터 문제가 있었다.
 
-![sandbox5](../assets/sandbox5.png)
+![sandbox5](../static/images/sandbox5.png)
 
 이런 모양으로 비교 블록을 만들기로 기획이 되었는데, 되게 불편할 것 같았다. 그래서 나온 다른 방법은 _"일반 블록을 조인해서 비교 블록을 만들자!"_ 였다. 이 방법은 매우 직관적이여서 좋았다 또한 이미 만들어져 있는 일반 블록의 데이터 구조를 이용해서 개발하면 되기 때문에 개발 시간도 줄일 수 있었다.
