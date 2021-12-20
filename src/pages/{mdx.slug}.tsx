@@ -1,14 +1,18 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { container } from "../styles/material.module.css";
+import PostHeader from "../components/PostHeader";
+import PostContent from "../components/PostContent";
 
 const BlogPost = ({ data }) => {
   return (
     <div className={container}>
-      <h1>{data.mdx.frontmatter.title}</h1>
-      <p>{data.mdx.frontmatter.date}</p>
-      <MDXRenderer>{data.mdx.body}</MDXRenderer>
+      <section>
+        <PostHeader post={data.mdx.frontmatter} />
+      </section>
+      <section>
+        <PostContent body={data.mdx.body} />
+      </section>
     </div>
   );
 };
