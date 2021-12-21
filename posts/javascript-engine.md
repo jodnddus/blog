@@ -2,7 +2,7 @@
 title: "자바스크립트 엔진 동작 과정"
 date: "2021-12-21"
 description: "자바스크립트 엔진의 동작 과정에 대해서 공부한 내용을 기록하는 글"
-categories: ["study", "web-basic"]
+categories: ["study"]
 comments: true
 ---
 

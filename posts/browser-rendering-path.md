@@ -2,7 +2,7 @@
 title: "브라우저 렌더링 과정"
 date: "2021-12-21"
 description: "브라우저의 렌더링 과정에 관해 공부한 내용을 기록하는 글"
-categories: ["study", "web-basic"]
+categories: ["study"]
 comments: true
 ---
 
