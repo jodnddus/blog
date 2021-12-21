@@ -1,6 +1,6 @@
 ---
 title: "테이블 뷰 개발 과정"
-date: "2020-08-01"
+date: "2021-08-01"
 description: "테이블 뷰 개발하면서 생긴 일들"
 categories: [devlog]
 comments: true

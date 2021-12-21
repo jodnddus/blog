@@ -1,6 +1,6 @@
 ---
 title: "글또 6기 다짐 글"
-date: "2020-07-19T00:47:03.284Z"
+date: "2021-07-19"
 description: "글또 6기를 시작하며 어떤 마음가짐으로 글 쓰는 습관을 길러갈 것인지에 관한 글"
 categories: [promise]
 comments: true
