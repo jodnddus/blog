@@ -15,16 +15,14 @@ const CategoryButton = ({
   children,
 }: CategoryButtonPropsType) => {
   return (
-    <Button
-      selected={selected}
-      onClick={() => onCategoryIndexChange(index)}
-    >
+    <Button selected={selected} onClick={() => onCategoryIndexChange(index)}>
       {children}
     </Button>
   );
 };
 
 const Button = styled.button<{ selected: boolean }>`
+  cursor: pointer;
   background-color: ${(props) => (props.selected ? "#edf2f7" : "white")};
   border: 1px solid ${(props) => (props.selected ? "white" : "#dbdbdb")};
   border-radius: 5px;
