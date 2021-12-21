@@ -38,5 +38,6 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-sass",
     "gatsby-plugin-cname",
+    "gatsby-plugin-styled-components",
   ],
 };
