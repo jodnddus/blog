@@ -745,6 +745,10 @@
   display: list-item;
   word-wrap: break-all;
   text-align: -webkit-match-parent;
+  img {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
 }
 
 .markdown li > p {
