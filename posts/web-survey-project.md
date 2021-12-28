@@ -1,7 +1,7 @@
 ---
-title: "설문 진행 애플리케이션 만들기"
+title: "포켓서베이 웹 설문의 특별한 기능들"
 date: "2020-07-08"
-description: "포켓서베이의 웹 설문 기능을 만든 경험을 공유합니다."
+description: "포켓서베이 웹 설문의 특별한 기능을 만들며 해결한 문제들에 대해 다룹니다."
 categories: [devlog]
 comments: true
 ---
