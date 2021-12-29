@@ -28,8 +28,6 @@ const IndexPage = ({ data }) => {
     );
   }, [posts, categories, selectCategoryIndex]);
 
-  console.log("filteredPosts: ", filteredPosts);
-
   return (
     <main className={container}>
       <title>조웅연 개발 블로그</title>
