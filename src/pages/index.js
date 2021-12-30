@@ -32,7 +32,12 @@ const IndexPage = ({ data }) => {
     <main className={container}>
       <title>조웅연 개발 블로그</title>
       <PageHeaderSection>
-        <PageMoveLink href="/resume">이력서</PageMoveLink>
+        <PageMoveLink
+          href="https://lamyeon.notion.site/0c156a26538742da8ea5e7fbdf3cc510"
+          target={"_blank"}
+        >
+          이력서
+        </PageMoveLink>
         <PageMoveLink href="/posts">글 목록</PageMoveLink>
       </PageHeaderSection>
       <ProfileSection>
