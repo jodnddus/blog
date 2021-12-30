@@ -2,7 +2,7 @@
 title: "사용자 커스텀 분석 보고서 프로젝트"
 date: "2021-09-22"
 description: "사용자가 커스텀 가능한 분석 보고서 기능 개발 과정"
-categories: [devlog]
+categories: [devlog, pks]
 comments: true
 ---
 
