@@ -21,8 +21,43 @@ const createBlogPages = ({ createPage, results }) => {
       component: blogPostTemplate,
       context: {
         slug: node.fields.slug,
-        nextSlug: next?.fields.slug ?? '',
-        prevSlug: previous?.fields.slug ?? '',
+        nextSlug: next?.fields.slug ?? "",
+        prevSlug: previous?.fields.slug ?? "",
+      },
+    });
+  });
+};
+
+const createPostsPages = ({ createPage, results }) => {
+  const categoryTemplate = require.resolve(
+    `./src/templates/categoryTemplate.tsx`
+  );
+  const categorySet = new Set(["All"]);
+  const { edges } = results.data.allMarkdownRemark;
+
+  edges.forEach(({ node }) => {
+    const postCategories = node.frontmatter.categories;
+    postCategories.forEach((category) => categorySet.add(category));
+  });
+
+  const categories = [...categorySet];
+
+  createPage({
+    path: `/posts`,
+    component: categoryTemplate,
+    context: { currentCategory: "All", edges, categories },
+  });
+
+  categories.forEach((currentCategory) => {
+    createPage({
+      path: `/posts/${currentCategory}`,
+      component: categoryTemplate,
+      context: {
+        currentCategory,
+        categories,
+        edges: edges.filter(({ node }) =>
+          node.frontmatter.categories.includes(currentCategory)
+        ),
       },
     });
   });
@@ -33,7 +68,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const results = await graphql(`
     {
-      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
+      allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 1000
+      ) {
         edges {
           node {
             id
@@ -44,6 +82,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             frontmatter {
               categories
               title
+              description
               date(formatString: "MMMM DD, YYYY")
             }
           }
@@ -59,4 +98,5 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   createBlogPages({ createPage, results });
+  createPostsPages({ createPage, results });
 };

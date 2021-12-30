@@ -31,6 +31,10 @@ const IndexPage = ({ data }) => {
   return (
     <main className={container}>
       <title>조웅연 개발 블로그</title>
+      <PageHeaderSection>
+        <PageMoveLink href="/resume">이력서</PageMoveLink>
+        <PageMoveLink href="/posts">글 목록</PageMoveLink>
+      </PageHeaderSection>
       <ProfileSection>
         <div>
           <BlogTitle>
@@ -87,6 +91,22 @@ export const posts = graphql`
   }
 `;
 
+const PageHeaderSection = styled.section`
+  padding: 0 1rem;
+  height: 5rem;
+  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1rem;
+`;
+const PageMoveLink = styled.a`
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: black;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 const BlogTitle = styled.h1`
   margin: 0;
   font-size: 3rem;
