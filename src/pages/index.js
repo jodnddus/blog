@@ -76,7 +76,10 @@ const IndexPage = ({ data }) => {
 
 export const posts = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: 1000
+    ) {
       edges {
         node {
           id
