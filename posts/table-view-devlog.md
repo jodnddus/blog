@@ -28,7 +28,7 @@ comments: true
 
 # 테이블 뷰
 
-이번에는 이 기능들과는 별개로 모인 응답 데이터들을 테이블 형태로 표시하고, 각종 필터나 정렬을 해서 원하는 정보를 얻을 수 있게하는 일명 `테이블 뷰` 프로젝트를 진행하게 되었습니다.
+두 기능들과는 별개로, 모인 응답 데이터들을 테이블 형태로 표시하고, 각종 필터나 정렬을 해서 원하는 정보를 얻을 수 있게하는 일명 `테이블 뷰` 프로젝트를 진행하게 되었는데요.
 
 `테이블 뷰` 프로젝트에는 [react-table](https://react-table.tanstack.com/)이라는 라이브러리를 사용하였습니다.
 
@@ -43,26 +43,26 @@ react-table은 테이블에 사용되는 값과 옵션값을 넣었을 때, 각�
 테이블 뷰 프로젝트에는 가장 중요한 목표 3가지가 있습니다.
 
 1. 모든 버전에 대한 응답들이 테이블에 표시되어야 함
-2. 모든 속성에 대해서 정렬, 필터 기능이 잘 작동해야 함
-3. 마지막으로 수정한 테이블의 형태가 유지되어야 함
+2. 정렬, 필터 기능이 작동해야 함
+3. 테이블의 형태가 유지되어야 함
 
-이 3가지 목표들을 기준으로 상세한 개발 과정을 살펴보겠습니다.
+이 3가지 목표들을 어떤 개발 과정을 거쳐서 달성하였는지에 대해서 살펴보겠습니다.
 
 # 모든 버전에 대한 응답들이 테이블에 표시되어야 함
+
+## 문제 제기
 
 처음에 이 요구사항을 들었을 때 "다른 버전의 설문 응답 데이터는 어떻게 표시해야 하지?" 라는 의문이 생겼습니다.
 
 > 포켓서베이 설문에는 `버전`이라는 개념이 있습니다. `버전`은 정수로 표현되고, 설문의 내용이 바뀔때마다 1씩 올라갑니다. `버전`이 존재하기 때문에 설문의 내용이 수정되어도 설문이 수정되기 전의 분석 데이터는 유지할 수 있습니다.
 
-예를 들어 1버전인 A설문에 ㄱ,ㄴ,ㄷ 이라는 문항이 있고 2버전인 A설문에 ㄱ,ㄹ,ㅁ 이라는 문항이 있다고 가정하겠습니다.
-
-이렇게 여러 버전이 있는 설문 응답을 한 테이블에 표시하기 위해서는 한개의 열로 만들어야 합니다.
+예를 들어 1버전인 A설문에 ㄱ,ㄴ,ㄷ 이라는 문항이 있고 2버전인 A설문에 ㄱ,ㄹ,ㅁ 이라는 문항이 있다고 가정하겠습니다. 응답 데이터를 테이블로 표현하려면 모든 버전의 모든 문항이 한 열에 표시되어야 하는데요. 이것을 구현하는 과정에서 한가지 걸림돌이 있었습니다.
 
 ![테이블 뷰](../static/images/table-view-devlog-5.png)
 
-## 방법
+## 문제 해결 과정
 
-그냥 보기에는 중복값을 없애서 합치면 되지만, 1버전 설문의 ㄱ문항과 2버전 설문의 ㄱ문항을 식별할 수 있어야 하기 때문에 별도의 병합 함수를 만들었습니다.
+그냥 보기에는 모든 버전의 모든 문항들을 배열에 넣고 중복값을 없애면 될 것이라고 생각했습니다. 하지만 1버전 설문의 ㄱ문항과 2버전 설문의 ㄱ문항을 식별할 수 있어야 하기 때문에 해당 문항이 어떤 버전에 속하는지 표시하면서 합치는 별도 함수를 만들었습니다.
 
 ```typescript
 interface TableViewInfoType {
@@ -82,7 +82,7 @@ function makeOriginHeaderList(tableViewInfo: TableViewInfoType) {
   try {
     const questionHeaders = tableViewInfo.headers_info;
     let questionHeaderList: HeaderType[] = [];
-    
+
     for (let questionHeaderIndex = 0; questionHeaderIndex < questionHeaders.length; questionHeaderIndex += 1) {
       const item = questionHeaders[questionHeaderIndex]
 
@@ -133,53 +133,53 @@ function App() {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Name',
+        Header: "Name",
         columns: [
           {
-            Header: 'First Name',
-            accessor: 'firstName',
+            Header: "First Name",
+            accessor: "firstName",
           },
           {
-            Header: 'Last Name',
-            accessor: 'lastName',
+            Header: "Last Name",
+            accessor: "lastName",
           },
         ],
       },
       {
-        Header: 'Info',
+        Header: "Info",
         columns: [
           {
-            Header: 'Age',
-            accessor: 'age',
+            Header: "Age",
+            accessor: "age",
           },
         ],
       },
     ],
     []
-  )
+  );
 
   const data = [
     {
-      firstName: '웅연',
-      lastName: '조',
-      age: 200
+      firstName: "웅연",
+      lastName: "조",
+      age: 200,
     },
     {
-      firstName: 'woongyeon',
-      lastName: 'jo',
-      age: 99
-    }
-  ]
+      firstName: "woongyeon",
+      lastName: "jo",
+      age: 99,
+    },
+  ];
 
   return (
     <Styles>
       <Table columns={columns} data={data} />
     </Styles>
-  )
+  );
 }
 ```
 
-react-table에서는 이렇게 columns에 있는 accessor의 값을 data배열의 각 객체의 키로 넣어주면 값이 자동으로 잡힙니다. 이 성질을 이용해서 문항 제목을 accessor로 두고 기준열을 만드는 작업을 했던 것입니다. 응답값을 테이블의 row로 만드는 것이 쉬우면서, 열 이름에 표시하면 어떤 문항의 응답값인지 바로 확인이 가능한 1석2조의 효과가 있기 때문입니다.
+react-table에서는 이렇게 columns에 있는 accessor의 값을 data배열의 각 객체의 키로 넣어주면 값이 자동으로 잡힙니다. 이 성질을 이용해서 문항 제목을 accessor로 두고 기준열을 만드는 작업을 했던 것입니다. row를 만드는 것이 쉬우면서, 열 이름에 표시하면 어떤 문항의 응답값인지 바로 확인이 가능한 1석2조의 효과가 있기 때문입니다.
 
 ## 현재 이 코드가 가지고 있는 맹점
 
@@ -194,5 +194,101 @@ react-table에서는 이렇게 columns에 있는 accessor의 값을 data배열�
 이 맹점에 대한 해결책으로 ㄴ, ㄴ2 간에 유사도를 측정해서 특정 조건에 부합한다면 같은 문항으로 취합하는 작업이 필요할 것으로 보입니다.
 
 # 정렬, 필터 기능이 작동해야 함
+
+"나이를 입력하세요" 라는 문항의 응답값을 정렬해서 본다거나, "성별을 선택해주세요" 라는 문항의 응답값을 남성으로 필터링해서 남성들의 응답값을 보고싶다거나 그런 경우를 위해서 모든 문항에 대해서 정렬, 필터 기능이 동작해야 합니다.
+
+react-table에서는 정렬과 필터 기능을 기본적으로 제공하는데요. 어떻게 사용하는지 코드로 살펴보겠습니다.
+
+```javascript
+import { useFilters, useSortBy } from "react-table";
+
+const props = useTable(
+  {
+    columns: memoizedColumns,
+    data: memoizedData,
+    ...
+  },
+  useFilters,
+  useSortBy,
+  ...
+);
+
+const memoizedColumns = useMemo(
+  () =>
+    tableHeader.map((item) => {
+      const Filter = filterSwitcher(item);
+
+      return {
+        Header: "테이블에 표시되는 열 이름"
+        accessor: "데이터를 끌어오기 위한 키값",
+        Filter,
+      };
+    }),
+  [tableHeader],
+);
+```
+
+react-table에서 제공하는 useFilters와 useSortBy를 useTable안에 인자로 넘겨주면 해당 기능들을 구현하기 위한 준비가 됩니다.
+
+## 필터
+
+useFilters를 인자로 넘기면 props안에 columns에 Filter라는 값을 넣을 수 있게 되는데, 여기에는 JSX를 넘길 수 있습니다. 그렇기 때문에 각 열마다 다른 모양의 필터 컴포넌트를 띄울 수 있습니다. 아래 gif처럼요.
+
+![](../static/images/table-view-devlog-7.gif)
+
+Filter에 넘기는 컴포넌트에는 자동으로 필터링 관련 함수들이 props로 전달됩니다. 여기서 전달되는 filterValue로 현재 걸려있는 필터 상태를 조회할 수 있고, setFilter를 이용해서 필터를 수정할 수 있습니다.
+
+아래 코드는 객관식 복수 선택 문항에 필터를 걸 때 나오는 컴포넌트입니다.
+
+```javascript
+function RadioCheckColumnFilter({
+  column: { filterValue, setFilter, preFilteredRows, id },
+}: ColumnFilterPropertiesType) {
+  ...
+}
+```
+
+이러한 구조로 다양한 문항 타입에 대응이 되는 필터링 기능을 구현하였습니다.
+
+## 정렬
+
+보통 react-table로 테이블을 만들 때
+
+```jsx
+<table {...getTableProps()}>
+  <thead>
+    {headerGroups.map((headerGroup) => (
+      <tr {...headerGroup.getHeaderGroupProps()}>
+        {headerGroup.headers.map((column) => (
+          <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+        ))}
+      </tr>
+    ))}
+  </thead>
+  ...
+</table>
+```
+
+이렇게 headerGroups를 이용해서 헤더를 만드는데요. useTable을 실행할 때 useSortBy를 인자로 넘기면 column안에 getSortByToggleProps라는 함수가 생겨납니다.
+
+getSortByToggleProps함수는 클릭 시 데이터의 정렬값이 오름차순, 내림차순, 기본중 하나로 설정되게 하는 함수입니다.
+
+위 코드에서
+
+```jsx
+<th {...column.getHeaderProps()}>{column.render("Header")}</th>
+```
+
+를
+
+```jsx
+<th {...column.getHeaderProps(column.getSortByToggleProps())}>
+  {column.render("Header")}
+</th>
+```
+
+로 바꾸면 헤더를 클릭할때마다 정렬값이 바뀌게 됩니다.
+
+이런 방식으로 정렬 기능을 구현하였습니다.
 
 # 테이블의 형태가 유지되어야 함
