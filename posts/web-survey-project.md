@@ -32,9 +32,9 @@ comments: true
 
 폼 서비스에서 문항을 표시하는 방법은 보편적으로 두 가지가 있습니다.
 
-1. 여러 문항을 한 페이지에 모두 표시하는 방법. <img src="https://www.pocketsurvey.co.kr/static/media/webSurvey2Card.8ed04407.gif" width="300" />
+1. 여러 문항을 한 페이지에 모두 표시하는 방법. <img src="https://www.pocketsurvey.co.kr/static/media/webSurvey2Scroll.0469cd3b.gif" width="300" />
 
-2. 한 페이지에 한 문항씩 보이게 한 다음, 응답이 이뤄지면 다음 페이지를 표시하는 방법. <img src="https://www.pocketsurvey.co.kr/static/media/webSurvey2Scroll.0469cd3b.gif" width="300" />
+2. 한 페이지에 한 문항씩 보이게 한 다음, 응답이 이뤄지면 다음 페이지를 표시하는 방법. <img src="https://www.pocketsurvey.co.kr/static/media/webSurvey2Card.8ed04407.gif" width="300" />
 
 포켓서베이는 응답자가 전체 설문이 어떤 구조로 이뤄져 있는지 파악하기 쉽게 만들기 위해서 **전자**의 방법을 선택해 개발하였습니다.
 
