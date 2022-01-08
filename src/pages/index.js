@@ -33,7 +33,7 @@ const IndexPage = ({ data }) => {
       <title>조웅연 개발 블로그</title>
       <PageHeaderSection>
         <PageMoveLink
-          href="https://lamyeon.notion.site/0c156a26538742da8ea5e7fbdf3cc510"
+          href="https://jodnddu.notion.site/0c156a26538742da8ea5e7fbdf3cc510"
           target={"_blank"}
         >
           이력서
