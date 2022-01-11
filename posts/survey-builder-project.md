@@ -175,3 +175,7 @@ const Question = () => {
 현재 선택한 문항(currentQuestion)의 데이터를 가져와서 제목, 선택지 리스트를 표시합니다.
 
 ![프리뷰 컴포넌트](../static/images/builder-preview.gif)
+
+# 마무리
+
+이렇게 포켓서베이의 설문 제작 기능에 대해서 사용법과 개발 흐름 위주로 살펴보았습니다.
