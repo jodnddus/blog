@@ -200,7 +200,7 @@ react-table에서는 이렇게 columns에 있는 accessor의 값을 data배열�
 react-table에서는 정렬과 필터 기능을 기본적으로 제공하는데요. 어떻게 사용하는지 코드로 살펴보겠습니다.
 
 ```javascript
-import { useFilters, useSortBy } from "react-table";
+import { useTable, useFilters, useSortBy } from "react-table";
 
 const props = useTable(
   {
@@ -292,3 +292,52 @@ getSortByToggleProps함수는 클릭 시 데이터의 정렬값이 오름차순,
 이런 방식으로 정렬 기능을 구현하였습니다.
 
 # 테이블의 형태가 유지되어야 함
+
+설문 제작자는 이렇게 만들어진 테이블을 보면서 필요한 정보를 얻기 위해 정렬이나, 필터 기능을 이용할 것입니다. 한 번 설정한 정렬, 필터값을 계속 유지시키기 위해서는 현재 테이블의 설정값을 가져올 수 있어야 합니다.
+
+```javascript
+import { useTable } from "react-table";
+
+const props = useTable(
+  {
+    initialState: {},
+    columns: memoizedColumns,
+    data: memoizedData,
+    ...
+  },
+  ...
+);
+
+props.state // 테이블 설정값
+```
+
+react-table은 테이블의 설정값을 저장하는 state를 제공합니다.
+
+이 설정값이 바뀔 때마다 서버에 저장하고,
+
+```javascript
+React.useEffect(() => {
+  try {
+    setIsSaving(true);
+
+    setTimeout(() => {
+      tableViewService
+        .fetchTableViewJson(blueprint.survey_id, email, data)
+        .then(() => {
+          setIsSaving(false);
+        });
+    }, 1000);
+  } catch {
+    setIsSaving("error");
+  }
+}, [props.state]);
+```
+
+새롭게 로드할때는 저장된 테이블 설정값을 initialState에 넣어줌으로써 테이블의 형태를 유지시켰습니다.
+
+
+# 마무리
+
+이렇게 react-table이라는 라이브러리를 사용해서 포켓서베이의 테이블 뷰 기능을 구현 해보았습니다. 정렬, 필터 기능부터 설정값 저장기능까지 여러모로 테이블 뷰의 요구사항에 딱 맞는 라이브러리였던 것 같습니다.
+
+react-table에는 정렬, 필터 이외에도 글로벌 필터, 열 크기 리사이징, 페이지네이션 테이블에 관련되어있는 여러 부가기능들이 제공되고 있는데요, 테이블 뷰에서도 사용하고 있지만 단순하게 기능을 키고 끄는 작업밖에 할게 없어서, 이번 포스팅에서는 제외하였습니다.
