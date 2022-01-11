@@ -2,7 +2,7 @@
 title: "포켓서베이 웹 설문의 특별한 기능들"
 date: "2020-07-08"
 description: "포켓서베이 웹 설문의 특별한 기능을 만들며 해결한 문제들에 대해 다룹니다."
-categories: [devlog, pks]
+categories: [pks]
 comments: true
 ---
 
