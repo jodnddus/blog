@@ -37,12 +37,82 @@ comments: true
 
 ![](../static/images/pks-ui-components-3.png)
 
+# 프로젝트 세팅
+
+cra로 프로젝트를 만들고 storybook를 사용할 수 있게 세팅을 진행하였습니다.
+
+[storybook 세팅에 참고한 글](https://velog.io/@velopert/start-storybook)
+
 # 컴포넌트 디자인
 
-정한 요소들은 디자이너분이 새롭게 디자인해서 XD로 전달해주셨습니다.
+타겟 컴포넌트들에 대해 디자이너분이 새롭게 디자인해서 XD로 전달해주시면 저는 하나씩 받아서 디자인 작업을 진행하였습니다.
 
 ![](../static/images/pks-ui-components-4.png)
 
-그동안 저는 cra로 프로젝트를 만들고 storybook를 사용할 수 있게 세팅을 진행하였습니다.
+가장 간단한 Toggle 컴포넌트를 예시로 보여드리겠습니다. [Toggle 컴포넌트 storybook](https://earlysloth-devteam.github.io/pocketsurvey-ui-components/?path=/story/components-toggle--index)
 
-[storybook 세팅에 참고한 글](https://velog.io/@velopert/start-storybook)
+```javascript
+import React from "react"
+import styled from "styled-components"
+
+type ToggleType = {
+  toggleOnBackgroundColor: string;
+  hoveredBackgroundColor: string;
+  isToggleOn: boolean;
+  setIsToggleOn: (isToggleOn: boolean) => void;
+  className?: string;
+  disable?: boolean;
+};
+
+function Toggle({
+  toggleOnBackgroundColor,
+  hoveredBackgroundColor,
+  isToggleOn,
+  setIsToggleOn,
+  className,
+  disable = false,
+}: ToggleType): JSX.Element {
+  return (
+    <ToggleContainer
+      backgroundColor={isToggleOn ? toggleOnBackgroundColor : "#d6d6d6"}
+      hoveredBackgroundColor={hoveredBackgroundColor}
+      isToggleOn={isToggleOn}
+      onClick={() => {
+        if (!disable) {
+          setIsToggleOn(!isToggleOn)
+        }
+      }}
+      data-testid="ToggleContainer"
+      className={className}
+      disable={disable}
+    >
+      <ToggleButton
+        isToggleOn={isToggleOn}
+        disable={disable}
+      />
+    </ToggleContainer>
+  )
+}
+
+const ToggleContainer = styled.div<{
+  ... 
+}>`
+  ...
+`
+const ToggleButton = styled.div<{
+  ...
+}>`
+  ...
+`
+
+export default Toggle;
+
+```
+
+코드에서 보시다시피 색상, 비활성화 유무(disable), 토글 상태, 토글 상태 업데이트 함수 등 컴포넌트 작동에 관련된 모든 값은 컴포넌트를 사용하는 쪽에서 props로 넘겨주게 만들었습니다.
+
+디자인은 storybook으로 진행하였습니다.
+
+# 프로젝트 번들링
+
+# UI 라이브러리 배포
