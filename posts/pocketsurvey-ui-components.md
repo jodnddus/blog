@@ -1,6 +1,6 @@
 ---
 title: "UI 라이브러리 만들어서 편하게 개발하기"
-date: "2020-02"
+date: "2021-02"
 description: "다른 팀원들의 업무 집중도를 위해 사내 UI 라이브러리를 만든 경험을 공유합니다."
 categories: [pks]
 comments: true
