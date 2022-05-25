@@ -45,7 +45,7 @@ const IndexPage = ({ data }) => {
           <BlogTitle>
             조웅연
             <br />
-            개발 블로그
+            개발 블로그 ✍
           </BlogTitle>
           <BlogDescription>
             안녕하세요, 프론트엔드 개발자
@@ -55,9 +55,6 @@ const IndexPage = ({ data }) => {
         </div>
         <ProfileImage />
       </ProfileSection>
-      <PostCountSection>
-        <WritingEmoji>{posts.map(() => ".")}✍️</WritingEmoji>
-      </PostCountSection>
       <CategorySection>
         <CategorySelector
           categories={categories}
@@ -129,19 +126,12 @@ const ProfileSection = styled.section`
   justify-content: space-between;
   padding: 0 1rem;
 `;
-const PostCountSection = styled.section`
-  padding: 0 1rem;
-  text-align: center;
-`;
 const CategorySection = styled.section`
   padding: 0 1rem;
   margin-top: 3rem;
 `;
 const PostSection = styled.section`
   padding: 0 1rem;
-`;
-const WritingEmoji = styled.span`
-  font-size: 3rem;
 `;
 
 export default IndexPage;
