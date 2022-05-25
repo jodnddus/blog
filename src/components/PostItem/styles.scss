@@ -10,13 +10,17 @@
 .post-card-title-link {
   text-decoration: none;
 }
-.post-card-title {
+.post-item-card-title {
   color: black;
   margin: 0;
-  margin-bottom: 0.5rem;
   font-size: 2rem;
 }
-.post-description {
+.post-item-date {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  color: gray;
+}
+.post-item-description {
   color: black;
   margin: 0;
 }

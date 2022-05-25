@@ -85,7 +85,7 @@ export const posts = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM D, YYYY")
+            date(formatString: "YYYY-MM-DD")
             title
             description
             categories

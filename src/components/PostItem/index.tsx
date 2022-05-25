@@ -13,8 +13,9 @@ const PostItem = ({ post }: PostItemPropsType) => {
   return (
     <Link to={`${post.slug}`} className="post-card-title-link">
       <article key={post.id} className="post-item-container">
-        <h2 className="post-card-title">{post.title}</h2>
-        <p className="post-description">{post.description}</p>
+        <h2 className="post-item-card-title">{post.title}</h2>
+        <p className="post-item-date">{post.date}</p>
+        <p className="post-item-description">{post.description}</p>
       </article>
     </Link>
   );
