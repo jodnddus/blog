@@ -7,26 +7,9 @@ import Post from "../models/post";
 
 import PostItem from "../components/PostItem";
 import ProfileImage from "../components/ProfileImage";
-import CategorySelector from "../components/CategorySelector";
-
-import getAllCategories from "../utils/getAllCategories";
 
 const IndexPage = ({ data }) => {
   const posts = data.allMarkdownRemark.edges.map(({ node }) => new Post(node));
-
-  const [selectCategoryIndex, setSelectCategoryIndex] = React.useState(0);
-  const categories = ["all", ...getAllCategories(posts)];
-  const onCategoryIndexChange = React.useCallback(
-    (value) => setSelectCategoryIndex(value),
-    []
-  );
-
-  const filteredPosts = React.useMemo(() => {
-    if (categories[selectCategoryIndex] === "all") return posts;
-    return posts.filter((post) =>
-      post.categories.includes(categories[selectCategoryIndex])
-    );
-  }, [posts, categories, selectCategoryIndex]);
 
   return (
     <main className={container}>
@@ -55,15 +38,8 @@ const IndexPage = ({ data }) => {
         </div>
         <ProfileImage />
       </ProfileSection>
-      <CategorySection>
-        <CategorySelector
-          categories={categories}
-          selectCategoryIndex={selectCategoryIndex}
-          onCategoryIndexChange={onCategoryIndexChange}
-        />
-      </CategorySection>
       <PostSection>
-        {filteredPosts.map((post) => (
+        {posts.map((post) => (
           <PostItem post={post} key={post.id} />
         ))}
       </PostSection>
@@ -75,7 +51,7 @@ export const posts = graphql`
   query {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 1000
+      limit: 10 
     ) {
       edges {
         node {
@@ -126,11 +102,8 @@ const ProfileSection = styled.section`
   justify-content: space-between;
   padding: 0 1rem;
 `;
-const CategorySection = styled.section`
-  padding: 0 1rem;
-  margin-top: 3rem;
-`;
 const PostSection = styled.section`
+  margin-top: 10rem;
   padding: 0 1rem;
 `;
 
