@@ -21,6 +21,7 @@
     "@types/styled-components": "^5.1.18",
     "gatsby": "^4.4.0",
     "gatsby-plugin-cname": "^1.0.0",
+    "gatsby-plugin-feed": "^4.15.0",
     "gatsby-plugin-image": "^2.4.0",
     "gatsby-plugin-mdx": "^3.4.0",
     "gatsby-plugin-sass": "^5.4.0",
