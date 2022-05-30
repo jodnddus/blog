@@ -1,11 +1,11 @@
 .post-item-container {
   margin-top: 3rem;
-  transition: background-color, padding 0.3s;
+  padding: 0.5rem;
+  transition: background-color 0.3s;
 }
 .post-item-container:hover {
   background-color: #edf2f7;
   border-radius: 5px;
-  padding: 0.5rem;
 }
 .post-card-title-link {
   text-decoration: none;
