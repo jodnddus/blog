@@ -30,11 +30,6 @@ const IndexPage = ({ data }) => {
             <br />
             개발 블로그 ✍
           </BlogTitle>
-          <BlogDescription>
-            안녕하세요, 프론트엔드 개발자
-            <br />
-            조웅연입니다.
-          </BlogDescription>
         </div>
         <ProfileImage />
       </ProfileSection>
