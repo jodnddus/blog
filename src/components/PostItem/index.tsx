@@ -15,7 +15,7 @@ const PostItem = ({ post }: PostItemPropsType) => {
       <article key={post.id} className="post-item-container">
         <h2 className="post-item-card-title">{post.title}</h2>
         <p className="post-item-date">{post.date}</p>
-        <p className="post-item-description">{post.description}</p>
+        <p className="post-item-description">{post.excerpt}</p>
       </article>
     </Link>
   );

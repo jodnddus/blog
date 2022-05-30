@@ -49,26 +49,22 @@ const IndexPage = ({ data }) => {
 
 export const posts = graphql`
   query {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 10 
-    ) {
+    allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}, limit: 10) {
       edges {
         node {
           id
-          html
           fields {
             slug
           }
           frontmatter {
             date(formatString: "YYYY-MM-DD")
             title
-            description
             categories
           }
+          excerpt(format: PLAIN, pruneLength: 200)
         }
       }
-    }
+    } 
   }
 `;
 
