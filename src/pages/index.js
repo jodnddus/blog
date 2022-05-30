@@ -66,12 +66,13 @@ const PageHeaderSection = styled.section`
   gap: 1rem;
 `;
 const PageMoveLink = styled.a`
-  font-size: 1rem;
-  font-weight: 700;
   text-decoration: none;
   color: black;
+  padding: 0.2rem;
+  transition: background-color 0.3s;
   &:hover {
-    text-decoration: underline;
+    background-color: #edf2f7;
+    border-radius: 5px;
   }
 `;
 const BlogTitle = styled.h1`
@@ -85,7 +86,7 @@ const ProfileSection = styled.section`
   padding: 0 1rem;
 `;
 const PostSection = styled.section`
-  margin-top: 10rem;
+  margin-top: 5rem;
   padding: 0 1rem;
 `;
 
