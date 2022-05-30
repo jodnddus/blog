@@ -15,12 +15,6 @@ const IndexPage = ({ data }) => {
     <main className={container}>
       <title>조웅연 개발 블로그</title>
       <PageHeaderSection>
-        <PageMoveLink
-          href="https://jodnddus.notion.site/0c156a26538742da8ea5e7fbdf3cc510"
-          target={"_blank"}
-        >
-          이력서
-        </PageMoveLink>
         <PageMoveLink href="/posts">글 목록</PageMoveLink>
       </PageHeaderSection>
       <ProfileSection>
@@ -72,7 +66,8 @@ const PageHeaderSection = styled.section`
   gap: 1rem;
 `;
 const PageMoveLink = styled.a`
-  font-size: 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
   text-decoration: none;
   color: black;
   &:hover {
@@ -82,10 +77,6 @@ const PageMoveLink = styled.a`
 const BlogTitle = styled.h1`
   margin: 0;
   font-size: 3rem;
-`;
-const BlogDescription = styled.h1`
-  margin: 0;
-  font-size: 1.5rem;
 `;
 const ProfileSection = styled.section`
   display: flex;
