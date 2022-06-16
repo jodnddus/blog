@@ -1,7 +1,7 @@
 @use "./variables" as *;
 
 .markdown {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .markdown .octicon {
@@ -87,9 +87,12 @@
   background-color: initial;
 }
 
+.markdown p {
+  color: #3d3d3f;
+}
+
 .markdown a:active,
 .markdown a:hover {
-  outline-width: 0;
 }
 
 .markdown strong {
@@ -145,8 +148,6 @@
 
 .markdown a {
   color: var(--link-text-color);
-  text-decoration: none;
-  border-bottom: 0.05em solid;
   border-color: var(--link-text-color);
 }
 
@@ -298,7 +299,7 @@
 
 .markdown :not(pre) > code.language-text {
   background: rgba(135, 131, 120, 0.15);
-  color: #eb5757;
+  color: #3d3d3f;
   overflow-wrap: break-word;
 }
 
@@ -670,9 +671,9 @@
 }
 
 .markdown blockquote {
-  padding: 0 1em;
+  padding: 0 10px;
   color: #6a737d;
-  border-left: 0.25em solid var(--markdown-blockquote-border-color);
+  border-left: 2px solid #6a737d;
 }
 
 .markdown blockquote > :first-child {

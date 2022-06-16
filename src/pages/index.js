@@ -1,39 +1,33 @@
 import * as React from "react";
 import styled from "styled-components";
-import { graphql } from "gatsby";
-import { container } from "../styles/material.module.css";
+import {graphql} from "gatsby";
+import {container} from "../styles/material.module.css";
 
 import Post from "../models/post";
 
 import PostItem from "../components/PostItem";
 import ProfileImage from "../components/ProfileImage";
 
-const IndexPage = ({ data }) => {
-  const posts = data.allMarkdownRemark.edges.map(({ node }) => new Post(node));
+const IndexPage = ({data}) => {
+    const posts = data.allMarkdownRemark.edges.map(({node}) => new Post(node));
 
-  return (
-    <main className={container}>
-      <title>조웅연 개발 블로그</title>
-      <PageHeaderSection>
-        <PageMoveLink href="/posts">글 목록</PageMoveLink>
-      </PageHeaderSection>
-      <ProfileSection>
-        <div>
-          <BlogTitle>
-            조웅연
-            <br />
-            개발 블로그 ✍
-          </BlogTitle>
-        </div>
-        <ProfileImage />
-      </ProfileSection>
-      <PostSection>
-        {posts.map((post) => (
-          <PostItem post={post} key={post.id} />
-        ))}
-      </PostSection>
-    </main>
-  );
+    return (
+        <main className={container}>
+            <title>조웅연 개발 블로그</title>
+            <PageHeaderSection>
+                <BlogTitle>
+                    조웅연 개발 블로그
+                </BlogTitle>
+                <PageMoveLink href="/posts">글 목록</PageMoveLink>
+            </PageHeaderSection>
+            <Joke>🔥🏃😍🌈🏄🌊</Joke>
+            <PostSection>
+                {posts.map((post) => (
+                    <PostItem post={post} key={post.id}/>
+                ))}
+            </PostSection>
+        </main>
+    );
 };
 
 export const posts = graphql`
@@ -50,7 +44,7 @@ export const posts = graphql`
             title
             categories
           }
-          excerpt(format: PLAIN, pruneLength: 200)
+          excerpt(pruneLength: 150, format: PLAIN, truncate: true)
         }
       }
     } 
@@ -58,26 +52,27 @@ export const posts = graphql`
 `;
 
 const PageHeaderSection = styled.section`
-  padding: 0 1rem;
-  height: 5rem;
-  align-items: center;
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: space-between; 
+  padding: 1rem 0.5rem;
   gap: 1rem;
+`;
+const Joke = styled.span`
+  font-size: 6rem;
+  display: block;
+  text-align: center;
 `;
 const PageMoveLink = styled.a`
   text-decoration: none;
   color: black;
   padding: 0.2rem;
-  transition: background-color 0.3s;
   &:hover {
-    background-color: #edf2f7;
-    border-radius: 5px;
+    text-decoration: underline;
   }
 `;
 const BlogTitle = styled.h1`
   margin: 0;
-  font-size: 3rem;
+  
 `;
 const ProfileSection = styled.section`
   display: flex;
@@ -85,9 +80,6 @@ const ProfileSection = styled.section`
   justify-content: space-between;
   padding: 0 1rem;
 `;
-const PostSection = styled.section`
-  margin-top: 5rem;
-  padding: 0 1rem;
-`;
+const PostSection = styled.section``;
 
 export default IndexPage;

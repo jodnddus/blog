@@ -75,7 +75,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         edges {
           node {
             id
-            excerpt(pruneLength: 500, truncate: true)
+            excerpt(pruneLength: 150, format: PLAIN, truncate: true)
             fields {
               slug
             }
@@ -83,7 +83,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
               categories
               title
               description
-              date(formatString: "MMMM DD, YYYY")
+              date(formatString: "YYYY-MM-DD")
             }
           }
         }

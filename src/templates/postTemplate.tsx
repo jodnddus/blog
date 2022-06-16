@@ -22,9 +22,9 @@ export const post = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
-      excerpt(pruneLength: 500, truncate: true)
+      excerpt(pruneLength: 150, format: PLAIN, truncate: true)
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YYYY-MM-DD")
         title
         categories
       }
