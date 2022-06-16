@@ -95,6 +95,12 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: "@raae/gatsby-plugin-svg-emoji-favicon",
+      options: {
+        emoji: "🌊",
+      },
+    },
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-image",
