@@ -4,16 +4,23 @@ import styled from "styled-components";
 import {BlogTitle} from "../Titles";
 import {Joke, Link} from "../Materials";
 
-interface PageHeaderPropTypes {}
+interface PageHeaderPropTypes {
+    currentPageTitle: string;
+    moveToPage: {
+        title: string;
+        link: string;
+    }
+    isShowJoke: boolean;
+}
 
-const PageHeader: FC<PageHeaderPropTypes> = () => {
+const PageHeader: FC<PageHeaderPropTypes> = ({currentPageTitle, moveToPage, isShowJoke}) => {
     return (
         <PageHeaderContainer>
             <div className={"top"}>
-                <BlogTitle>조웅연 개발 블로그</BlogTitle>
-                <Link href="/posts">글 목록</Link>
+                <BlogTitle>{currentPageTitle}</BlogTitle>
+                <Link href={moveToPage.link}>{moveToPage.title}</Link>
             </div>
-            <Joke />
+            {isShowJoke && <Joke />}
         </PageHeaderContainer>
     )
 }
