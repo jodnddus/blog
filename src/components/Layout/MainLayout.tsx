@@ -10,7 +10,14 @@ const MainLayout: FC<MainLayoutPropTypes> = ({pageTitle, children}) => {
     return (
         <MainLayoutContainerStyle>
             <title>{pageTitle}</title>
-            <PageHeader />
+            <PageHeader
+                currentPageTitle={"조웅연 개발 블로그"}
+                moveToPage={{
+                    title: "글 목록",
+                    link: "/posts"
+                }}
+                isShowJoke
+            />
             {children}
         </MainLayoutContainerStyle>
     )
