@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./styles.scss";
+import styled from 'styled-components';
 
 type PostHeaderType = {
   post: {
@@ -11,10 +11,23 @@ type PostHeaderType = {
 const PostHeader = ({ post }: PostHeaderType) => {
   return (
     <>
-      <h1 className="post-title">{post.title}</h1>
-      <p className="post-date">{post.date}</p>
+      <PostTitle>{post.title}</PostTitle>
+      <PostDate className="post-date">{post.date}</PostDate>
     </>
   );
 };
+
+const PostTitle = styled.h1`
+  color: #3d3d3f;
+  font-size: 32px;
+  margin-bottom: 0.5rem;
+  margin-top: 16px;
+`;
+
+const PostDate = styled.p`
+  margin: 0;
+  margin-bottom: 0.5rem;
+  color: gray;
+`;
 
 export default PostHeader;
