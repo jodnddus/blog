@@ -1,19 +1,21 @@
-import * as React from "react";
+import React from "react";
 import { graphql } from "gatsby";
-import { container } from "../styles/material.module.css";
-import PostHeader from "../components/PostHeader";
+
+import {PostHeader} from "../components/Headers";
+import {PostLayout} from "../components/Layout";
+
 import PostContent from "../components/PostContent";
 
 const PostTemplate = ({ data }) => {
   return (
-    <div className={container}>
+    <PostLayout pageTitle={data.markdownRemark.frontmatter.title}>
       <section>
         <PostHeader post={data.markdownRemark.frontmatter} />
       </section>
       <section>
         <PostContent html={data.markdownRemark.html} />
       </section>
-    </div>
+    </PostLayout>
   );
 };
 
